@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+
+<body>
+    <br>
+    <h3 id="start"></h3>
+    <br>
+    <h3 id="startC"></h3>
+    <br>
+    <h3 id="startB"></h3>
+    <br>
+    <br>
+    <form role="form">
+        <div class="form-group">
+            <label for="entry"></label>
+            <input type="text" class="form-control" id="userbotinput" size="2">
+        </div>
+    </form>
+    <div id="userReturnB"></div>
+    <div id="userfeedback"></div>
+    <div id="buttonA">
+        <button type="button" id="a" class="btn btn-success btn-lrg" onclick="returnCapture()">Click To Talk To Me</button>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+
+
+
+
+
+    <script>
+        // initialize function to be called further down in setTimeout method delaying the text to be displayed to the html page
+        
+        function init(a) {
+            return a;
+
+        }
+
+
+
+//setTimeout method delaying the incremental writing of the string text in orange to the HTMl page
+
+        setTimeout(function () {
+            document.getElementById("start").innerHTML = init("Welcome inferior sub-human.");
+        }, 600);
+
+        setTimeout(function () {
+            document.getElementById("startC").innerHTML = init("My name is Mr. Robot");
+        }, 2000);
+
+        setTimeout(function () {
+            document.getElementById("startB").innerHTML = init("What is your name?");
+        }, 3400);
+
+// the html button will initialy call this function that captures the usres name and returns a response to the html name with the users name.....the function then changes the onclick event to call the checkSaid function further below
+        
+        function returnCapture() {
+            var captureUser = document.getElementById("userbotinput").value;
+            document.getElementById("startB").innerHTML = "Hello " + " " + captureUser + " - " + "what is it that you want to say?";
+            
+            document.getElementById(a + "Button").onclick = checkSaid();
+        }
+        
+
+        
+// declaring and assigning a variable as an array with nested arrays as values
+        var questionsAnswers = [
+            ["hi", "hello"],
+            ["Hi", "hello"],
+            ["hello", "hi"],
+            ["Hello", "hi"],
+            ["how are you", "not too shabby"],
+            ["How are you", "not too shabby"],
+            ["what\'s your name?", "mr robot"],
+            ["what\'s your name", "mr robot"],
+            ["what is your name?", "mr robot"],
+            ["What is your name", "mr robot"],
+            ["What\'s your name?", "mr robot"],
+            ["What\'s your name", "mr robot"],
+            ["What is your name?", "mr robot"],
+            ["what is your name", "mr robot"],
+            ["where am I?", "the eutopian society known as Boulder"],
+            ["where am I", "the eutopian society known as Boulder"],
+            ["Where am I", "the eutopian society known as Boulder"],
+            ["Where am I?", "the eutopian society known as Boulder"],
+            ["Where am i?", "the eutopian society known as Boulder"],
+            ["Where am i", "the eutopian society known as Boulder"],
+            ["where am i", "the eutopian society known as Boulder"],
+            ["where am i?", "the eutopian society known as Boulder"],
+           // ["what is my name?", captureUser],
+            ["where do you live?", "in a virtual world only accessible to highly inteligent beings"]
+
+        ];
+
+     // checkSaid function that should get called the second time a user clicks the html button. this function captures the user's second input and itterates through the questionAnswers function checking to see if the user enters one of the strings in 0 position subsequently returning the string in the 1 position if matched
+        
+        function checkSaid() {
+           
+            var userSaid = document.getElementById("userbotinput").value;
+            var numElements = questionsAnswers.length;
+            for (var i = 0; i < numElements; i++) {
+                if (userSaid == questionsAnswers[i][0]) {
+                    var response = questionsAnswers[i][1];
+                    document.getElementById("startB").innerHTML = response;
+                    
+                }
+               // if (userSaid !=  questionsAnswers[i][0]){
+               //     document.getElementById("startB").innerHTML = "I'm not evolved enough to understand your //input";
+                //}
+            }
+               
+            
+        }
+         //document.getElementById("userbotinput").value = null;
+        
+       
+//all punctuation marks I want to strip    
+var punctRE = /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-.\/:;<=>?@\[\]^_`{|}~]/g;
+//fixes the spaces after I remove a bunch of punctuation
+var spaceRE = /\s+/g;
+var str = userSaid; 
+//use string replace to strip the text
+var saidStripped = str.replace(punctRE, '').replace(spaceRE, ' ');
+//convert to lower case
+var saidLower = saidStripped.toLowerCase()    
+
+    </script>
+
+
+</body>
+
+</html>
